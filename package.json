@@ -1,0 +1,34 @@
+{
+  "name": "mongodb-poc",
+  "version": "1.0.0",
+  "description": "MongoDB POC covering Beginner to Advanced features - CRUD, indexing, aggregation, replication, sharding, and more",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "beginner": "node index.js --level beginner",
+    "intermediate": "node index.js --level intermediate",
+    "advanced": "node index.js --level advanced",
+    "all": "node index.js --all",
+    "db-setup": "node examples/beginner/01-database-collections.js",
+    "crud": "node examples/beginner/04-crud-operations.js",
+    "projection": "node examples/intermediate/01-projection.js",
+    "limit-sort": "node examples/intermediate/02-limit-sort.js",
+    "indexing": "node examples/intermediate/03-indexing.js",
+    "aggregation": "node examples/intermediate/04-aggregation.js",
+    "backup": "node examples/intermediate/06-backup.js",
+    "relationships": "node examples/advanced/01-relationships-references.js",
+    "atomic": "node examples/advanced/02-atomic-operations.js",
+    "mapreduce": "node examples/advanced/04-map-reduce.js",
+    "text-search": "node examples/advanced/05-text-search.js",
+    "regex": "node examples/advanced/06-regular-expressions.js",
+    "query-analysis": "node examples/advanced/03-query-analysis-covered.js"
+  },
+  "keywords": ["mongodb", "poc", "nosql", "database"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "mongodb": "^6.3.0"
+  }
+}
