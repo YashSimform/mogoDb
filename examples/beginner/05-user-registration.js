@@ -5,6 +5,8 @@ import { randomBytes, scryptSync } from "crypto";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PASSWORD_MIN_LENGTH = 8;
+const PASSWORD_NUMBER_REGEX = /[0-9]/;
+const PASSWORD_SPECIAL_REGEX = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]/;
 
 /**
  * Validate user registration input.
@@ -25,10 +27,20 @@ function validateRegistrationInput({ name, email, password }) {
 
   if (!password || password.trim() === "") {
     errors.push("Password is required.");
-  } else if (password.length < PASSWORD_MIN_LENGTH) {
-    errors.push(
-      `Password must be at least ${PASSWORD_MIN_LENGTH} characters long.`,
-    );
+  } else {
+    if (password.length < PASSWORD_MIN_LENGTH) {
+      errors.push(
+        `Password must be at least ${PASSWORD_MIN_LENGTH} characters long.`,
+      );
+    }
+    if (!PASSWORD_NUMBER_REGEX.test(password)) {
+      errors.push("Password must include at least one number.");
+    }
+    if (!PASSWORD_SPECIAL_REGEX.test(password)) {
+      errors.push(
+        "Password must include at least one special character (e.g. !@#$%^&*).",
+      );
+    }
   }
 
   return errors;
@@ -95,18 +107,30 @@ async function run() {
     },
     {
       label: "Invalid email format",
-      input: { name: "Alice", email: "not-an-email", password: "securePass1" },
+      input: { name: "Alice", email: "not-an-email", password: "Secure1!" },
     },
     {
       label: "Password too short (< 8 chars)",
-      input: { name: "Bob", email: "bob@example.com", password: "short" },
+      input: { name: "Bob", email: "bob@example.com", password: "Sh0rt!" },
+    },
+    {
+      label: "Password missing number and special character",
+      input: { name: "Frank", email: "frank@example.com", password: "NoNumbersOrSpecial" },
+    },
+    {
+      label: "Password missing a number",
+      input: { name: "Dan", email: "dan@example.com", password: "NoNumbers!" },
+    },
+    {
+      label: "Password missing a special character",
+      input: { name: "Eve", email: "eve@example.com", password: "NoSpecial1" },
     },
     {
       label: "Valid registration",
       input: {
         name: "Carol",
         email: "carol@example.com",
-        password: "strongPass1",
+        password: "Strong1@pass",
       },
     },
     {
@@ -114,7 +138,7 @@ async function run() {
       input: {
         name: "Carol Again",
         email: "carol@example.com",
-        password: "anotherPass1",
+        password: "Another1@pass",
       },
     },
   ];
