@@ -12,6 +12,7 @@ const levels = {
     'examples/beginner/02-data-types.js',
     'examples/beginner/03-schema-design-demo.js',
     'examples/beginner/04-crud-operations.js',
+    'examples/beginner/05-user-registration.js',
   ],
   intermediate: [
     'examples/intermediate/01-projection.js',
@@ -77,7 +78,7 @@ async function main() {
   console.log('  npm run limit-sort  npm run indexing  npm run aggregation');
   console.log('  npm run backup      npm run relationships  npm run atomic');
   console.log('  npm run mapreduce   npm run text-search   npm run regex');
-  console.log('  npm run query-analysis');
+  console.log('  npm run query-analysis  npm run register');
 }
 
 main().catch((err) => {

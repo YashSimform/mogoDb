@@ -22,7 +22,8 @@
     "mapreduce": "node examples/advanced/04-map-reduce.js",
     "text-search": "node examples/advanced/05-text-search.js",
     "regex": "node examples/advanced/06-regular-expressions.js",
-    "query-analysis": "node examples/advanced/03-query-analysis-covered.js"
+    "query-analysis": "node examples/advanced/03-query-analysis-covered.js",
+    "register": "node examples/beginner/05-user-registration.js"
   },
   "keywords": ["mongodb", "poc", "nosql", "database"],
   "author": "",
